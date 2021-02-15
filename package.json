@@ -1,0 +1,29 @@
+{
+  "name": "trade_products",
+  "version": "1.0.0",
+  "description": "a trading platform for buying and selling products ... by location",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "NODE_ENV=development nodemon ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3m3kalionel/trade_products.git"
+  },
+  "author": "whitebeltdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3m3kalionel/trade_products/issues"
+  },
+  "homepage": "https://github.com/3m3kalionel/trade_products#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15"
+  }
+}
