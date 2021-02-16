@@ -1,0 +1,57 @@
+.container,
+.page-container {
+  display: flex;
+  width: 650px;
+}
+
+.page-container {
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#page-header {
+  border: 1px dotted orange;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  text-align: center;
+}
+
+div#upload-icon {
+  display: flex;
+  background: red;
+  height: 40px;
+  width: 40px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+div#upload-icon:hover {
+  cursor: pointer;
+}
+
+#images-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.image-container {
+  position: relative;
+}
+
+span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: red;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border: 1px solid gray;
+}
