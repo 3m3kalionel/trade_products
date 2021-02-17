@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("*", (req, res) =>
+app.get("/", (req, res) =>
   res.status(200).send("Yo! Welcome to trade products")
 );
 
