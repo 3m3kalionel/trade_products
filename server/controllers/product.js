@@ -44,6 +44,25 @@ const createProduct = async (req, res) => {
   }
 };
 
+const fetchProducts = async (req, res) => {
+  try {
+    const products = await productModel
+      .find({
+        productOwnerId: "602bafb78ca00a0b722ffaca",
+      })
+      .sort({ createdAt: "desc" });
+    return res.status(200).send({
+      message: "status: success - products found",
+      products,
+    });
+  } catch (error) {
+    return res.status(400).send({
+      message: "status: failed - something went wrong",
+    });
+  }
+};
+
 export default {
   createProduct,
+  fetchProducts,
 };
