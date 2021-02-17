@@ -4,6 +4,7 @@ import Jusibe from "jusibe";
 import mongoose from "mongoose";
 
 import userModel from "./models/userModel";
+import productModel from "./models/productModel";
 
 dotenv.config({ path: ".env" });
 
@@ -100,6 +101,9 @@ const getModel = modelParam => {
     case "user":
       return userModel;
       break;
+    case "product":
+      return productModel;
+      break;
   }
 };
 
@@ -123,7 +127,6 @@ export async function validateDocument(modelParam, documentId, queryOptions) {
           select: returnFields,
         })
       : await model.findById(documentId, returnFields);
-
     if (!document) {
       error.code = 404;
       error.message = `status: failed - ${modelParam} id ${documentId} not found`;

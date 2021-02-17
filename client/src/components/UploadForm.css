@@ -17,21 +17,6 @@
   text-align: center;
 }
 
-div#upload-icon {
-  display: flex;
-  background: red;
-  height: 40px;
-  width: 40px;
-  color: #fff;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-}
-
-div#upload-icon:hover {
-  cursor: pointer;
-}
-
 #images-container {
   display: flex;
   flex-direction: row;
@@ -54,4 +39,72 @@ img {
   width: 200px;
   height: 200px;
   border: 1px solid gray;
+}
+
+div.form-row {
+  display: flex;
+}
+
+input.upload-form-input {
+  width: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+#form-body {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+input {
+  background: #23333c;
+  border: 1px solid #868f94;
+  height: 40px;
+  color: #fff;
+  outline: none;
+  border-radius: 3px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+input:focus {
+  border: 1px solid #19b188;
+}
+
+#authentication-form {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background: #23333c;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  border: 1px solid yellow;
+}
+
+h1#form-header {
+  color: #fff;
+  align-self: center;
+  font-size: 16px;
+}
+
+button#upload-button {
+  background: #19b188;
+  border: none;
+  max-width: 80px;
+  height: 30px;
+  border-radius: 2px;
+  align-self: center;
+  margin-right: 10px;
+}
+
+button:hover {
+  cursor: pointer;
 }

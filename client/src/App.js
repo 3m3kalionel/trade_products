@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import "./App.css";
 import UploadForm from "./components/UploadForm";
-import PreviewImage from "./components/PreviewImage";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -22,10 +21,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <UploadForm setImage={setImage} selectedImage={selectedImage} />
-        <div id="images-container" className="container">
-          {previewImage && <PreviewImage imageSrc={previewImage} />}
-        </div>
+        <UploadForm
+          setImage={setImage}
+          selectedImage={selectedImage}
+          previewImage={previewImage}
+        />
       </header>
       <div></div>
     </div>
