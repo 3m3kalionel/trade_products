@@ -50,6 +50,7 @@ const fetchProducts = async (req, res) => {
       .find({
         productOwnerId: "602bafb78ca00a0b722ffaca",
       })
+      .populate({ path: "productOwnerId", select: "username" })
       .sort({ createdAt: "desc" });
     return res.status(200).send({
       message: "status: success - products found",
