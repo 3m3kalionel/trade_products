@@ -1,0 +1,84 @@
+div#backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* div#backdrop form {
+  background: red;
+  display: flex;
+
+  display: block;
+  max-width: 60%;
+  max-height: 80%;
+  margin: 60px auto;
+} */
+
+div#backdrop div#image-form {
+  display: flex;
+  margin: 60px auto;
+  border: 4px solid #fff;
+  max-width: 80%;
+  height: 80%;
+}
+
+form#comments-form {
+  background: #fff;
+  height: 100%;
+}
+
+div#backdrop div#lhs {
+  flex-grow: 1;
+}
+
+div#lhs img {
+  width: 100%;
+  height: 100%;
+}
+
+div#backdrop div#rhs {
+  flex-grow: 1;
+}
+
+div.owner-section {
+  display: inline-block;
+}
+
+div.owner-name,
+div.commenter-name {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+div.product-description,
+div.user-comment {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+div.product-name {
+  font-size: 12px;
+}
+
+div#message-row {
+  display: flex;
+}
+
+div#message-row input {
+  background: transparent;
+  padding-left: 4px;
+  font-size: 12px;
+  color: #000;
+  width: 100%;
+}
+
+button#send-button {
+  border: none;
+  background: transparent;
+  height: 16px;
+  align-self: center;
+  color: teal;
+}

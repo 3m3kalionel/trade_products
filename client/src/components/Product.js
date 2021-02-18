@@ -2,11 +2,16 @@ import React from "react";
 
 import "./Product.css";
 
-const Product = ({ details }) => {
+const Product = ({ details, setClickedProductDetails }) => {
   const { _id, name, description, imageUrl } = details;
 
   return (
-    <div className="product">
+    <div
+      className="product"
+      onClick={() => {
+        setClickedProductDetails(details);
+      }}
+    >
       <img className="product-image" src={imageUrl} alt={description} />
       <div className="product-description">
         <p className="title">{name}</p>
