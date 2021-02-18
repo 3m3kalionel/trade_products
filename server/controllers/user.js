@@ -76,6 +76,10 @@ const signin = async (req, res) => {
       return res.status(200).json({
         messge: "status: success - signed in",
         token,
+        user: {
+          _id: existingUser._id,
+          username: existingUser.username,
+        },
       });
     } else {
       return res.status(400).send({
