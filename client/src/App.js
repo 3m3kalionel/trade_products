@@ -4,6 +4,8 @@ import "./App.css";
 import UploadForm from "./components/UploadForm";
 import Product from "./components/Product";
 import Modal from "./components/Modal";
+import AuthForm from "./components/AuthForm";
+
 import axiosApi from "./api/axiosApi";
 
 function App() {
@@ -46,7 +48,8 @@ function App() {
     //   <div></div>
     // </div>
     <>
-      <div id="full-page">
+      <AuthForm />
+      {/* <div id="full-page">
         <div id="nav">
           <div id="left-section">
             <ul>
@@ -96,7 +99,7 @@ function App() {
           clickedProductDetails={clickedProductDetails}
           setClickedProductDetails={setClickedProductDetails}
         />
-      )}
+      )} */}
     </>
   );
 }
