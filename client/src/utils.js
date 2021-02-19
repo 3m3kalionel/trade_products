@@ -6,7 +6,8 @@ export const saveToken = userDetails => {
 
 export const retrieveToken = () => localStorage.getItem("trade-products-token");
 
-export const deleteToken = () => localStorage.removeItem("token");
+export const deleteToken = () =>
+  localStorage.removeItem("trade-products-token");
 
 export const setToken = token => {
   if (token) {
