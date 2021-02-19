@@ -4,7 +4,7 @@ import Signup from "./Signup";
 import Signin from "./Signin";
 import "./AuthPage.css";
 
-const AuthPage = () => {
+const AuthPage = ({ setUserDetails }) => {
   const [signup, setSignup] = useState(true);
   const toggleForms = () => {
     setSignup(!signup);
@@ -30,7 +30,11 @@ const AuthPage = () => {
             Log In
           </div>
         </div>
-        {signup ? <Signup /> : <Signin />}
+        {signup ? (
+          <Signup setUserDetails={setUserDetails} />
+        ) : (
+          <Signin setUserDetails={setUserDetails} />
+        )}
       </div>
     </div>
   );

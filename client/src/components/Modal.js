@@ -3,17 +3,30 @@ import React, { useState } from "react";
 import "./Modal.css";
 import axiosApi from "../api/axiosApi";
 
-const Modal = ({ clickedProductDetails, setClickedProductDetails }) => {
+const Modal = ({
+  clickedProductDetails,
+  setClickedProductDetails,
+  userDetails,
+}) => {
   const [message, setMessage] = useState("");
+  const [messagesList, setMessagesList] = useState([]);
+
   const { name, description, imageUrl, productOwnerId } = clickedProductDetails;
 
   const handleOnSubmit = async payload => {
     await axiosApi.post("/user/notify", payload);
+    setMessagesList([
+      ...messagesList,
+      {
+        message: payload.message,
+        sender: userDetails.username,
+      },
+    ]);
     setMessage("");
   };
 
   const payload = {
-    senderId: "602b342267f05a305d29d101",
+    senderId: userDetails._id,
     recipientId: productOwnerId._id,
     message,
   };
@@ -46,19 +59,14 @@ const Modal = ({ clickedProductDetails, setClickedProductDetails }) => {
                   <div className="product-name">{name}</div>
                   <div className="product-description">{description}</div>
                 </div>
-                <div className="owner-section">
-                  <div className="commenter-name">thenotoriousmma</div>
-                  <div className="user-comment">This really is nice. RIP</div>
-                </div>
-                <div className="owner-section">
-                  <div className="commenter-name">thenotoriousmma</div>
-                  <div className="user-comment">Makaveli The Don</div>
-                </div>
-                <div className="owner-section">
-                  <div className="commenter-name">thenotoriousmma</div>
-                  <div className="user-comment">RIP Tupac</div>
-                </div>
 
+                {messagesList &&
+                  messagesList.map((message, key) => (
+                    <div className="owner-section" key={key}>
+                      <div className="commenter-name">{message.sender}</div>
+                      <div className="user-comment">{message.message}</div>
+                    </div>
+                  ))}
                 <div id="message-row">
                   <input
                     value={message}

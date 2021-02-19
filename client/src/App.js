@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import BuyPage from "./components/BuyPage";
@@ -8,12 +8,14 @@ import AuthPage from "./components/AuthPage";
 
 import "./App.css";
 
-function App() {
+const App = () => {
+  const [userDetails, setUserDetails] = useState({});
+
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <AuthPage />
+          <AuthPage setUserDetails={setUserDetails} />
         </Route>
         <Route path="/buy">
           <BuyPage />
@@ -27,6 +29,6 @@ function App() {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;
