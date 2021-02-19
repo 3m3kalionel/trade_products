@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import Signup from "./Signup";
 import Signin from "./Signin";
-import "./AuthForm.css";
+import "./AuthPage.css";
 
-const AuthForm = () => {
+const AuthPage = () => {
   const [signup, setSignup] = useState(true);
   const toggleForms = () => {
     setSignup(!signup);
@@ -36,4 +36,4 @@ const AuthForm = () => {
   );
 };
 
-export default AuthForm;
+export default AuthPage;

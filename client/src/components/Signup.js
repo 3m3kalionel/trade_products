@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import axiosApi from "../api/axiosApi";
-import "./AuthForm.css";
+import "./AuthPage.css";
 import { saveToken } from "../utils";
 import LocationSearch from "./LocationSearch";
 
@@ -19,6 +20,7 @@ const Signup = () => {
   };
 
   const [values, setValues] = useState(defaultValues);
+  const history = useHistory();
 
   const handleChange = event => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -56,6 +58,7 @@ const Signup = () => {
     };
 
     saveToken(userDetails);
+    history.push("/buy");
   };
 
   return (
