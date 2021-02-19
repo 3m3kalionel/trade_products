@@ -5,7 +5,14 @@ import userModel from "../models/userModel";
 import { handleError, notify, validateDocument } from "../utils.js";
 
 const signup = async (req, res) => {
-  const { username, email, password, phoneNumber } = req.body;
+  const {
+    username,
+    email,
+    password,
+    phoneNumber,
+    address,
+    location,
+  } = req.body;
 
   if (!username || !email || !password || !phoneNumber) {
     return userModel(req.body).save(function (error) {
@@ -19,6 +26,8 @@ const signup = async (req, res) => {
     email: email.toLowerCase().trim(),
     password: hashedPassword,
     phoneNumber: phoneNumber.trim(),
+    address,
+    location,
   };
 
   const user = new userModel(userDetails);

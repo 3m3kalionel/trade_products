@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.canvas {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.location-search-input {
+  font-family: "Lato", sans-serif;
+  width: 500px;
+  height: 40px;
+  background: none;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #000;
+  font-weight: bold;
+  margin-left: 5rem;
+}
+
+div.autocomplete-dropdown-container div.input-suggestion {
+  font-family: "Lato", sans-serif;
+  width: 500px;
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px black solid;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000;
+  margin-left: 5rem;
+}

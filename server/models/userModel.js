@@ -50,6 +50,30 @@ const userSchema = new mongoose.Schema({
       },
     },
   },
+  address: {
+    type: String,
+    required: [true, "status: failed - Please enter your address"],
+    validate: {
+      validator: function (field) {
+        return isEmpty(field);
+      },
+      message: () => {
+        return `status: failed - address input can't be empty`;
+      },
+    },
+  },
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+      index: "2dsphere",
+    },
+  },
 });
 
 userSchema.plugin(beautifyUnique);
