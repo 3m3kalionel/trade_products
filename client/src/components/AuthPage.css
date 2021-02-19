@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+span#logout:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 div#auth-form-controller {
   display: flex;
   flex-direction: column;

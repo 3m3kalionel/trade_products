@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import Product from "./Product";
 import Modal from "./Modal";
 
 import axiosApi from "../api/axiosApi";
+import { deleteToken } from "../utils";
 
 const BuyPage = () => {
   const [productsList, setProductsList] = useState([]);
   const [clickedProductDetails, setClickedProductDetails] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchProducts() {
@@ -35,7 +38,15 @@ const BuyPage = () => {
             <ul>
               <li>Account</li>
               <li onClick={() => {}}>
-                <span>NGN 400</span>
+                <span
+                  id="logout"
+                  onClick={() => {
+                    deleteToken();
+                    history.push("/");
+                  }}
+                >
+                  Logout
+                </span>
               </li>
             </ul>
           </div>
