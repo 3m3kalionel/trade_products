@@ -6,7 +6,7 @@ import "./AuthPage.css";
 import { saveToken } from "../utils";
 import LocationSearch from "./LocationSearch";
 
-const Signup = () => {
+const Signup = ({ setUserDetails }) => {
   const defaultValues = {
     username: "",
     password: "",
@@ -58,6 +58,7 @@ const Signup = () => {
     };
 
     saveToken(userDetails);
+    setUserDetails(userDetails);
     history.push("/buy");
   };
 

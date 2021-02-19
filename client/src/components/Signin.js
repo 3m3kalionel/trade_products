@@ -5,7 +5,7 @@ import axiosApi from "../api/axiosApi";
 import "./AuthPage.css";
 import { saveToken } from "../utils";
 
-const Signin = () => {
+const Signin = ({ setUserDetails }) => {
   const defaultValues = {
     email: "",
     password: "",
@@ -34,6 +34,7 @@ const Signin = () => {
     };
 
     saveToken(userDetails);
+    setUserDetails(userDetails);
     history.push("/buy");
   };
 

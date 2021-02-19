@@ -6,7 +6,12 @@ import PreviewImage from "./PreviewImage";
 
 import axiosApi from "../api/axiosApi";
 
-const UploadForm = ({ selectedImage, setImage, previewImage }) => {
+const UploadForm = ({
+  selectedImage,
+  setImage,
+  previewImage,
+  productOwnerId,
+}) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [progressBarDisplay, setProgressBarDisplay] = useState(false);
@@ -17,7 +22,7 @@ const UploadForm = ({ selectedImage, setImage, previewImage }) => {
       await axiosApi.post("/product", {
         name,
         description,
-        productOwnerId: "602bafb78ca00a0b722ffaca",
+        productOwnerId,
         imageUrl: savedImageUrl,
       });
     }

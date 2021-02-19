@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import "./Modal.css";
 import axiosApi from "../api/axiosApi";
 
-const Modal = ({ clickedProductDetails, setClickedProductDetails }) => {
+const Modal = ({
+  clickedProductDetails,
+  setClickedProductDetails,
+  userDetails,
+}) => {
   const [message, setMessage] = useState("");
   const { name, description, imageUrl, productOwnerId } = clickedProductDetails;
 
@@ -13,7 +17,7 @@ const Modal = ({ clickedProductDetails, setClickedProductDetails }) => {
   };
 
   const payload = {
-    senderId: "602b342267f05a305d29d101",
+    senderId: userDetails._id,
     recipientId: productOwnerId._id,
     message,
   };

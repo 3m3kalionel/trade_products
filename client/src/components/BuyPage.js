@@ -5,11 +5,12 @@ import Product from "./Product";
 import Modal from "./Modal";
 
 import axiosApi from "../api/axiosApi";
-import { deleteToken } from "../utils";
+import { deleteToken, retrieveToken } from "../utils";
 
 const BuyPage = () => {
   const [productsList, setProductsList] = useState([]);
   const [clickedProductDetails, setClickedProductDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState({});
   const history = useHistory();
 
   useEffect(() => {
@@ -21,6 +22,11 @@ const BuyPage = () => {
     }
 
     fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    const userTokenDetails = JSON.parse(retrieveToken());
+    setUserDetails(userTokenDetails);
   }, []);
 
   return (
@@ -82,6 +88,7 @@ const BuyPage = () => {
         <Modal
           clickedProductDetails={clickedProductDetails}
           setClickedProductDetails={setClickedProductDetails}
+          userDetails={userDetails}
         />
       )}
     </>
