@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axiosApi from "../api/axiosApi";
 import "./AuthForm.css";
 import { saveToken } from "../utils";
+import LocationSearch from "./LocationSearch";
 
 const Signup = () => {
   const defaultValues = {
@@ -10,12 +11,33 @@ const Signup = () => {
     password: "",
     phoneNumber: "",
     email: "",
+    address: "",
+    location: {
+      type: "Point",
+      coordinates: [],
+    },
   };
 
   const [values, setValues] = useState(defaultValues);
 
   const handleChange = event => {
     setValues({ ...values, [event.target.name]: event.target.value });
+  };
+
+  const handleSelectedAddress = (address, coordinates) => {
+    const newCoordinates = [];
+
+    setValues({ ...values, address });
+    newCoordinates.push(coordinates.lng);
+    newCoordinates.push(coordinates.lat);
+    setValues({
+      ...values,
+      address,
+      location: {
+        ...values.location,
+        coordinates: newCoordinates,
+      },
+    });
   };
 
   const handleOnSubmit = async payload => {
@@ -88,6 +110,9 @@ const Signup = () => {
               required
             />
           </div>
+          {/* <div id="email-row"> */}
+          <LocationSearch handleSelectedAddress={handleSelectedAddress} />
+          {/* </div> */}
           <div id="action-button-container">
             <button type="submit" id="sign-up-button">
               Sign Up

@@ -28,13 +28,6 @@
   position: relative;
 }
 
-span {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: red;
-}
-
 img {
   width: 200px;
   height: 200px;

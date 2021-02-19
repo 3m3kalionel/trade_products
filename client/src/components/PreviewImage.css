@@ -2,13 +2,6 @@
   position: relative;
 }
 
-span {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: red;
-}
-
 img[alt="selected-pic"] {
   width: 200px;
   height: 200px;
