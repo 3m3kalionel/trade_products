@@ -30,11 +30,7 @@ const AuthPage = ({ setUserDetails }) => {
             Log In
           </div>
         </div>
-        {signup ? (
-          <Signup setUserDetails={setUserDetails} />
-        ) : (
-          <Signin setUserDetails={setUserDetails} />
-        )}
+        {signup ? <Signup /> : <Signin />}
       </div>
     </div>
   );
