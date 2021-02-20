@@ -5,24 +5,23 @@ import BuyPage from "./components/BuyPage";
 import SellPage from "./components/SellPage";
 import NoMatch from "./components/NoMatch";
 import AuthPage from "./components/AuthPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 import "./App.css";
 
 const App = () => {
-  const [userDetails, setUserDetails] = useState({});
-
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <AuthPage setUserDetails={setUserDetails} />
-        </Route>
-        <Route path="/buy">
+        <ProtectedRoute exact path="/">
+          <AuthPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/buy">
           <BuyPage />
-        </Route>
-        <Route path="/sell">
+        </ProtectedRoute>
+        <ProtectedRoute path="/sell">
           <SellPage />
-        </Route>
+        </ProtectedRoute>
         <Route path="*">
           <NoMatch />
         </Route>

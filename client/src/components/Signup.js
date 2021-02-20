@@ -6,7 +6,7 @@ import "./AuthPage.css";
 import { saveToken } from "../utils";
 import LocationSearch from "./LocationSearch";
 
-const Signup = ({ setUserDetails }) => {
+const Signup = () => {
   const defaultValues = {
     username: "",
     password: "",
@@ -58,7 +58,6 @@ const Signup = ({ setUserDetails }) => {
     };
 
     saveToken(userDetails);
-    setUserDetails(userDetails);
     history.push("/buy");
   };
 
@@ -114,9 +113,7 @@ const Signup = ({ setUserDetails }) => {
               required
             />
           </div>
-          {/* <div id="email-row"> */}
           <LocationSearch handleSelectedAddress={handleSelectedAddress} />
-          {/* </div> */}
           <div id="action-button-container">
             <button type="submit" id="sign-up-button">
               Sign Up
