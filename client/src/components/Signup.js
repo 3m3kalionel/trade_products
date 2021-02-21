@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import axiosApi from "../api/axiosApi";
-import "./AuthPage.css";
-import { saveToken } from "../utils";
 import LocationSearch from "./LocationSearch";
+import "./AuthPage.css";
+
+import axiosApi from "../api/axiosApi";
+import { saveToken } from "../utils";
 
 const Signup = () => {
   const defaultValues = {

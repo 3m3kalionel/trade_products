@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import beautifyUnique from "mongoose-beautiful-unique-validation";
 
+import locationSchema from "./locationSchema";
 import { isEmpty, isValidEmail } from "../utils.js";
 
 const userSchema = new mongoose.Schema({
@@ -62,18 +63,7 @@ const userSchema = new mongoose.Schema({
       },
     },
   },
-  location: {
-    type: {
-      type: String,
-      enum: ["Point"],
-      required: true,
-    },
-    coordinates: {
-      type: [Number],
-      required: true,
-      index: "2dsphere",
-    },
-  },
+  location: locationSchema,
 });
 
 userSchema.plugin(beautifyUnique);

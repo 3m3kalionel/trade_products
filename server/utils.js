@@ -143,3 +143,22 @@ export async function validateDocument(modelParam, documentId, queryOptions) {
     return { error };
   }
 }
+
+export const getDistanceDetailis = (distanceUnit, maximumDistance) => {
+  switch (distanceUnit) {
+    case "km":
+      return {
+        maxDistance: maximumDistance * 1000,
+        distanceMultiplier: 1 / 1000,
+        distanceField: "distance in km",
+      };
+      break;
+    case "miles":
+      return {
+        maxDistance: maximumDistance * 1609.34,
+        distanceMultiplier: 1 / 1609.34,
+        distanceField: "distance in miles",
+      };
+      break;
+  }
+};
