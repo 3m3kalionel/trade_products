@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import beautifyUnique from "mongoose-beautiful-unique-validation";
 
+import locationSchema from "./locationSchema";
 import { isEmpty } from "../utils.js";
 
 const productSchema = new mongoose.Schema(
@@ -25,11 +26,6 @@ const productSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    geoDetails: {
-      long: String,
-      lat: String,
-      availabilityRadius: Number,
-    },
     imageUrl: {
       type: String,
       required: [true, "status: failed - Please enter the product's image url"],
@@ -42,6 +38,19 @@ const productSchema = new mongoose.Schema(
         },
       },
     },
+    address: {
+      type: String,
+      required: [true, "status: failed - Please enter your address"],
+      validate: {
+        validator: function (field) {
+          return isEmpty(field);
+        },
+        message: () => {
+          return `status: failed - address input can't be empty`;
+        },
+      },
+    },
+    location: locationSchema,
   },
   { timestamps: true }
 );

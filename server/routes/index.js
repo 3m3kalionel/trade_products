@@ -9,6 +9,7 @@ const router = app => {
   app.post("/api/v1/user/notify", userController.notifyUser);
   app.post("/api/v1/product", productController.createProduct);
   app.get("/api/v1/product", productController.fetchProducts);
+  app.get("/api/v1/product/search", productController.fetchProductsByLocation);
 };
 
 export default router;

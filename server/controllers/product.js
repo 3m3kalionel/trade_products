@@ -1,5 +1,9 @@
 import productModel from "../models/productModel";
-import { handleError, validateDocument } from "../utils.js";
+import {
+  handleError,
+  validateDocument,
+  getDistanceDetailis,
+} from "../utils.js";
 
 const createProduct = async (req, res) => {
   try {
@@ -63,7 +67,44 @@ const fetchProducts = async (req, res) => {
   }
 };
 
+const fetchProductsByLocation = async (req, res) => {
+  try {
+    const { lng, lat, maximumDistance, distanceUnit, userId } = req.query;
+
+    const distanceDetails = getDistanceDetailis(
+      distanceUnit,
+      parseFloat(maximumDistance)
+    );
+    const products = await productModel.aggregate([
+      {
+        $geoNear: {
+          near: {
+            type: "Point",
+            coordinates: [parseFloat(lng), parseFloat(lat)],
+          },
+          spherical: true,
+          query: { type: "public" },
+          includeLocs: "dist.location",
+
+          query: { _id: { $ne: userId } },
+          ...distanceDetails,
+        },
+      },
+    ]);
+
+    res.status(200).send({
+      message: "status: success - products found",
+      products,
+    });
+  } catch (error) {
+    return res.status(400).send({
+      message: "status: failed - something went wrong",
+    });
+  }
+};
+
 export default {
   createProduct,
   fetchProducts,
+  fetchProductsByLocation,
 };

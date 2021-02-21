@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import "./UploadForm.css";
 import ProgressBar from "./ProgressBar";
 import PreviewImage from "./PreviewImage";
+import LocationSearch from "./LocationSearch";
+import "./UploadForm.css";
 
 import axiosApi from "../api/axiosApi";
 
@@ -16,6 +17,11 @@ const UploadForm = ({
   const [description, setDescription] = useState("");
   const [progressBarDisplay, setProgressBarDisplay] = useState(false);
   const [savedImageUrl, setSavedImageUrl] = useState(null);
+  const [address, setAddress] = useState("");
+  const [location, setLocation] = useState({
+    type: "Point",
+    coordinates: [],
+  });
 
   useEffect(() => {
     async function saveProduct() {
@@ -24,6 +30,8 @@ const UploadForm = ({
         description,
         productOwnerId,
         imageUrl: savedImageUrl,
+        address,
+        location,
       });
     }
 
@@ -45,6 +53,19 @@ const UploadForm = ({
 
   const toggleProgressBarDisplay = () => {
     setProgressBarDisplay(!progressBarDisplay);
+  };
+
+  const handleSelectedAddress = (newAddress, coordinates) => {
+    const newCoordinates = [];
+
+    setAddress(newAddress);
+    newCoordinates.push(coordinates.lng);
+    newCoordinates.push(coordinates.lat);
+
+    setLocation({
+      type: "Point",
+      coordinates: newCoordinates,
+    });
   };
 
   return (
@@ -106,6 +127,9 @@ const UploadForm = ({
                   setImage(selected);
                 }}
               />
+            </div>
+            <div>
+              <LocationSearch handleSelectedAddress={handleSelectedAddress} />
             </div>
             {!selectedImage && (
               <div className="preview">
