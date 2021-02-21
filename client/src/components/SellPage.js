@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import UploadForm from "./UploadForm";
-import { retrieveToken } from "../utils";
+import { setToken } from "../utils";
 
 const SellPage = () => {
   const [previewImage, setPreviewImage] = useState(null);
@@ -9,7 +9,7 @@ const SellPage = () => {
   const [userDetails, setUserDetails] = useState({});
 
   useEffect(() => {
-    const userTokenDetails = JSON.parse(retrieveToken());
+    const userTokenDetails = setToken();
     setUserDetails(userTokenDetails);
   }, []);
 

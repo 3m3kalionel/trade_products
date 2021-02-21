@@ -1,10 +1,11 @@
 import axios from "axios";
+import axiosApi from "./api/axiosApi";
 
-export const saveToken = userDetails => {
+const saveToken = userDetails => {
   localStorage.setItem("trade-products-token", JSON.stringify(userDetails));
 };
 
-export const retrieveToken = () => localStorage.getItem("trade-products-token");
+const retrieveToken = () => localStorage.getItem("trade-products-token");
 
 export const deleteToken = () =>
   localStorage.removeItem("trade-products-token");
@@ -13,7 +14,13 @@ export const setToken = token => {
   if (token) {
     saveToken(token);
   } else {
-    token = retrieveToken();
+    const userTokenDetails = JSON.parse(retrieveToken());
+    if (userTokenDetails) {
+      axiosApi.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${userTokenDetails.token}`;
+    }
+
+    return userTokenDetails;
   }
-  axios.defaults.headers.common["x-access-token"] = token;
 };

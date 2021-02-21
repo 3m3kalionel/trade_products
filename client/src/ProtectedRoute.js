@@ -1,10 +1,10 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
-import { retrieveToken } from "./utils";
+import { setToken } from "./utils";
 
 const ProtectedRoute = ({ path, children, ...rest }) => {
-  const userTokenDetails = JSON.parse(retrieveToken());
+  const userTokenDetails = setToken();
 
   return (
     <Route

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import axiosApi from "../api/axiosApi";
 import "./AuthPage.css";
-import { saveToken } from "../utils";
+import { setToken } from "../utils";
 
 const Signin = () => {
   const defaultValues = {
@@ -33,7 +33,7 @@ const Signin = () => {
       username,
     };
 
-    saveToken(userDetails);
+    setToken(userDetails);
     history.push("/buy");
   };
 

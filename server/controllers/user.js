@@ -36,7 +36,7 @@ const signup = async (req, res) => {
       return handleError(err, res);
     }
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET, {
-      expiresIn: 120,
+      expiresIn: "7d",
     });
 
     const newUser = document.toObject();
@@ -76,9 +76,9 @@ const signin = async (req, res) => {
     } else if (isMatch) {
       const token = jwt.sign(
         { userId: existingUser.id },
-        "process.env.APP_SECRET",
+        process.env.APP_SECRET,
         {
-          expiresIn: 120,
+          expiresIn: "7d",
         }
       );
 

@@ -5,7 +5,7 @@ import LocationSearch from "./LocationSearch";
 import "./AuthPage.css";
 
 import axiosApi from "../api/axiosApi";
-import { saveToken } from "../utils";
+import { setToken } from "../utils";
 
 const Signup = () => {
   const defaultValues = {
@@ -58,7 +58,7 @@ const Signup = () => {
       username,
     };
 
-    saveToken(userDetails);
+    setToken(userDetails);
     history.push("/buy");
   };
 
