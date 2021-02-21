@@ -5,7 +5,7 @@ import Product from "./Product";
 import Modal from "./Modal";
 
 import axiosApi from "../api/axiosApi";
-import { deleteToken, retrieveToken } from "../utils";
+import { deleteToken, setToken } from "../utils";
 
 const BuyPage = () => {
   const [productsList, setProductsList] = useState([]);
@@ -17,7 +17,7 @@ const BuyPage = () => {
     async function fetchProducts() {
       const {
         data: { products },
-      } = await axiosApi.get("/product");
+      } = await axiosApi.get("/products");
       setProductsList(products);
     }
 
@@ -25,7 +25,7 @@ const BuyPage = () => {
   }, []);
 
   useEffect(() => {
-    const userTokenDetails = JSON.parse(retrieveToken());
+    const userTokenDetails = setToken();
     setUserDetails(userTokenDetails);
   }, []);
 

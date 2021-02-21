@@ -51,9 +51,7 @@ const createProduct = async (req, res) => {
 const fetchProducts = async (req, res) => {
   try {
     const products = await productModel
-      .find({
-        productOwnerId: "602bafb78ca00a0b722ffaca",
-      })
+      .find()
       .populate({ path: "productOwnerId", select: "username" })
       .sort({ createdAt: "desc" });
     return res.status(200).send({
