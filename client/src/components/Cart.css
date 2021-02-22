@@ -1,0 +1,75 @@
+div#cart {
+  height: 100%;
+  background: #f2f2ef;
+  top: 0;
+  right: 0;
+  width: 0;
+  position: fixed;
+  transition: 0.3s;
+}
+
+div#content-container {
+  padding: 0 16px;
+}
+
+button#close-cart {
+  position: absolute;
+  top: 20px;
+  display: flex;
+}
+
+button#close-cart:hover {
+  cursor: pointer;
+}
+
+div#cart-title h5 {
+  text-align: center;
+  position: relative;
+  margin: 12px auto 32px;
+}
+
+select {
+  border-radius: 0;
+  width: 70px;
+  height: 32px;
+  padding-left: 10px;
+  border: 0;
+}
+
+div#fixed-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+  padding: 24px 12px;
+  background: #f2f2ef;
+}
+
+#details {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  border-top: 1px solid black;
+  padding: 12px 0;
+}
+
+div#fixed-footer button {
+  letter-spacing: 1px;
+  border-radius: 0;
+  font-size: 12px;
+  margin: 8px 0;
+  height: 48px;
+}
+
+button#checkout {
+  background: #4b5548;
+  color: #fff;
+}
+
+button#subscribe {
+  background: #fff;
+  border: 1px solid #000;
+}

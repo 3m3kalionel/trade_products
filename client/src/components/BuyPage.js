@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { IconContext } from "react-icons";
+import { IoCartOutline } from "react-icons/io5";
 import { useHistory } from "react-router-dom";
 
 import Product from "./Product";
 import Modal from "./Modal";
+import Cart from "./Cart";
 
 import axiosApi from "../api/axiosApi";
 import { deleteToken, setToken } from "../utils";
@@ -19,6 +22,12 @@ const BuyPage = () => {
   const [userDetails, setUserDetails] = useState({});
   const [values, setValues] = useState(defaultInputValues);
 
+  const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartItemTotal, setCartItemTotal] = useState(0);
+  const [width, setCartWidth] = useState(0);
+
+  let nextStateCartWidth;
   const history = useHistory();
 
   useEffect(() => {
@@ -36,6 +45,21 @@ const BuyPage = () => {
     const userTokenDetails = setToken();
     setUserDetails(userTokenDetails);
   }, []);
+
+  useEffect(() => {
+    let newArray = [];
+    cart.forEach((value, index) => {
+      productsList.forEach(product => {
+        if (product._id === value._id) {
+          newArray.push({
+            ...product,
+            quantity: value.quantity,
+          });
+        }
+      });
+    });
+    setCart(newArray);
+  }, [productsList, width]);
 
   const handleChange = ({ target: { name, value } }) => {
     setValues({ ...values, [name]: value });
@@ -60,6 +84,73 @@ const BuyPage = () => {
     setProductsList(fetchedProductsByLocation);
   };
 
+  const toggleCart = isCartOpen => {
+    nextStateCartWidth = isCartOpen === true ? 0 : "600px";
+    setIsCartOpen(!isCartOpen);
+    setCartWidth(nextStateCartWidth);
+  };
+
+  const getCartItemsTotal = newCart =>
+    newCart.reduce((acc, obj) => {
+      acc += obj.quantity;
+      return acc;
+    }, 0);
+
+  const getCartItem = productId =>
+    cart.find(element => element._id === productId);
+
+  const handleAddCartItem = product => {
+    const { _id } = product;
+    const cartItem = getCartItem(_id);
+    if (!cartItem) {
+      const newCart = [...cart, { ...product, quantity: 1 }];
+      setCart(newCart);
+      setCartItemTotal(getCartItemsTotal(newCart));
+    } else {
+      const newCart = cart.map(element => {
+        if (element._id === _id) {
+          return { ...product, quantity: cartItem.quantity + 1 };
+        } else {
+          return element;
+        }
+      });
+      setCart(newCart);
+      setCartItemTotal(getCartItemsTotal(newCart));
+    }
+  };
+
+  const deleteCartItem = _id => {
+    const newCart = cart.filter(item => item._id !== _id);
+    setCart(newCart);
+    setCartItemTotal(getCartItemsTotal(newCart));
+  };
+
+  const handleRemoveCartItem = product => {
+    const { _id, quantity } = product;
+    const cartItem = getCartItem(_id);
+    if (cartItem.quantity === 1) {
+      deleteCartItem(product._id);
+    } else {
+      const newCart = cart.map(item => {
+        if (item._id === _id) {
+          return { ...product, quantity: quantity - 1 };
+        } else {
+          return item;
+        }
+      });
+      setCart(newCart);
+      setCartItemTotal(getCartItemsTotal(newCart));
+    }
+  };
+
+  const cartActions = {
+    onIncrement: handleAddCartItem,
+    onDecrement: handleRemoveCartItem,
+    onDelete: deleteCartItem,
+    onToggle: () => toggleCart(isCartOpen),
+    // onClick: setCurrencyDetails,
+  };
+
   return (
     <>
       <div id="full-page">
@@ -74,6 +165,16 @@ const BuyPage = () => {
           <div id="right-section">
             <ul>
               <li>Account</li>
+              <li
+                onClick={() => {
+                  toggleCart(isCartOpen);
+                }}
+              >
+                <IconContext.Provider value={{ size: "20px" }}>
+                  <IoCartOutline />
+                </IconContext.Provider>
+                <span> {cartItemTotal}</span>
+              </li>
               <li onClick={() => {}}>
                 <span
                   id="logout"
@@ -152,6 +253,10 @@ const BuyPage = () => {
                   details={product}
                   key={key}
                   setClickedProductDetails={setClickedProductDetails}
+                  onIncrement={handleAddCartItem}
+                  onToggle={toggleCart}
+                  // onClick={setCurrencyDetails}
+                  // currencyDetails={currencyDetails}
                 />
               );
             })}
@@ -165,6 +270,13 @@ const BuyPage = () => {
           userDetails={userDetails}
         />
       )}
+      <Cart
+        cart={cart}
+        cartActions={cartActions}
+        // currencyList={currencyList}
+        width={width}
+        // currencyDetails={currencyDetails}
+      />
     </>
   );
 };
