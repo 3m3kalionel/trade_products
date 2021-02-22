@@ -148,7 +148,6 @@ const BuyPage = () => {
     onDecrement: handleRemoveCartItem,
     onDelete: deleteCartItem,
     onToggle: () => toggleCart(isCartOpen),
-    // onClick: setCurrencyDetails,
   };
 
   return (
@@ -255,8 +254,6 @@ const BuyPage = () => {
                   setClickedProductDetails={setClickedProductDetails}
                   onIncrement={handleAddCartItem}
                   onToggle={toggleCart}
-                  // onClick={setCurrencyDetails}
-                  // currencyDetails={currencyDetails}
                 />
               );
             })}
@@ -270,13 +267,7 @@ const BuyPage = () => {
           userDetails={userDetails}
         />
       )}
-      <Cart
-        cart={cart}
-        cartActions={cartActions}
-        // currencyList={currencyList}
-        width={width}
-        // currencyDetails={currencyDetails}
-      />
+      <Cart cart={cart} cartActions={cartActions} width={width} />
     </>
   );
 };

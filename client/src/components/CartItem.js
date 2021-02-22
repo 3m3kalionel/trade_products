@@ -3,13 +3,7 @@ import CurrencyFormat from "react-currency-format";
 
 import "./CartItem.css";
 
-const CartItem = ({
-  itemDetails,
-  onIncrement,
-  onDecrement,
-  onDelete,
-  // selectedCurrency,
-}) => {
+const CartItem = ({ itemDetails, onIncrement, onDecrement, onDelete }) => {
   const { imageUrl, price, quantity, title, _id } = itemDetails;
   return (
     <div className="cart-item-detail">
@@ -38,16 +32,18 @@ const CartItem = ({
         </div>
       </div>
       <div className="cart-item-detail-center">
-        {/* <span>
-          {`${selectedCurrency} `}
-          <CurrencyFormat
-            value={price * quantity}
-            thousandSeparator={true}
-            displayType={"text"}
-            decimalScale={2}
-            fixedDecimalScale={true}
-          />
-        </span> */}
+        {
+          <span>
+            {`NGN `}
+            <CurrencyFormat
+              value={price * quantity}
+              thousandSeparator={true}
+              displayType={"text"}
+              decimalScale={2}
+              fixedDecimalScale={true}
+            />
+          </span>
+        }
       </div>
       <div className="cart-item-detail-rhs">
         <img src={imageUrl} alt={title} />
