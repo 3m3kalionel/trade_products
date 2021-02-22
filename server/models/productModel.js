@@ -50,6 +50,13 @@ const productSchema = new mongoose.Schema(
         },
       },
     },
+    price: {
+      type: Number,
+      required: [
+        true,
+        "status: failed - Please enter the price of the product",
+      ],
+    },
     location: locationSchema,
   },
   { timestamps: true }

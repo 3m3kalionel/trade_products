@@ -7,16 +7,9 @@ import CartItem from "./CartItem";
 import "./Cart.css";
 
 const Cart = props => {
-  const {
-    cart,
-    cartActions,
-    currencyList,
-    width,
-    // currencyDetails,
-  } = props;
+  const { cart, cartActions, width } = props;
 
   const { onIncrement, onDecrement, onDelete, onToggle, onClick } = cartActions;
-  //   const { selectedCurrency, defaultCurrency } = currencyDetails;
 
   const getCartPriceTotal = cart.reduce((acc, obj) => {
     acc += obj.price * obj.quantity;
@@ -43,7 +36,6 @@ const Cart = props => {
               onIncrement={onIncrement}
               onDecrement={onDecrement}
               onDelete={onDelete}
-              //   selectedCurrency={selectedCurrency}
             />
           ))}
         </div>
@@ -52,13 +44,13 @@ const Cart = props => {
           <div id="details">
             <div>Subtotal</div>
             <span>
+              {`NGN `}
               <CurrencyFormat
                 value={getCartPriceTotal}
                 thousandSeparator={true}
                 displayType={"text"}
                 decimalScale={2}
                 fixedDecimalScale={true}
-                // prefix={`${selectedCurrency || defaultCurrency} `}
               />
             </span>
           </div>

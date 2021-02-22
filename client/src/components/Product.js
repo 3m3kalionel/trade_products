@@ -7,17 +7,11 @@ const Product = ({
   setClickedProductDetails,
   onIncrement,
   onToggle,
-  // currencyDetails
 }) => {
-  const { _id, name, description, imageUrl } = details;
+  const { _id, name, description, imageUrl, price } = details;
 
   return (
-    <div
-      className="product"
-      // onClick={() => {
-      //   setClickedProductDetails(details);
-      // }}
-    >
+    <div className="product">
       <img
         className="product-image"
         src={imageUrl}
@@ -26,19 +20,15 @@ const Product = ({
           setClickedProductDetails(details);
         }}
       />
-      <div className="product-description">
+      <div className="user-product-description">
         <p className="title">{name}</p>
-        <p className="cost">{description}</p>
+        <p className="cost">From {price}</p>
       </div>
       <button
         className="add-to-cart-button"
         onClick={() => {
           onIncrement(details);
           onToggle(false);
-          // onClick({
-          // ...currencyDetails,
-          // selectedCurrency: selectedCurrency || defaultCurrency,
-          // });
         }}
       >
         Add to Cart

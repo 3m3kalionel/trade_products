@@ -7,9 +7,9 @@ import {
 
 const createProduct = async (req, res) => {
   try {
-    const { name, productOwnerId } = req.body;
+    const { name, productOwnerId, price } = req.body;
 
-    if (!name || !productOwnerId) {
+    if (!name || !productOwnerId || !price) {
       return productModel(req.body).save(function (error) {
         handleError(error, res);
       });
@@ -31,7 +31,6 @@ const createProduct = async (req, res) => {
         message,
       });
     }
-
     const newProduct = new productModel(req.body);
     newProduct.save(function (error, document) {
       error && error.errors

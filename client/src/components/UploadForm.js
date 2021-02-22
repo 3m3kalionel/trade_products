@@ -13,8 +13,13 @@ const UploadForm = ({
   previewImage,
   productOwnerId,
 }) => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const defaultInputValues = {
+    name: "",
+    description: "",
+    price: 0,
+  };
+
+  const [values, setValues] = useState(defaultInputValues);
   const [progressBarDisplay, setProgressBarDisplay] = useState(false);
   const [savedImageUrl, setSavedImageUrl] = useState(null);
   const [address, setAddress] = useState("");
@@ -25,9 +30,11 @@ const UploadForm = ({
 
   useEffect(() => {
     async function saveProduct() {
+      const { name, description, price } = values;
       await axiosApi.post("/product", {
         name,
         description,
+        price,
         productOwnerId,
         imageUrl: savedImageUrl,
         address,
@@ -38,17 +45,12 @@ const UploadForm = ({
     if (savedImageUrl) {
       saveProduct();
       toggleProgressBarDisplay();
-      setName("");
-      setDescription("");
+      setValues(defaultInputValues);
     }
   }, [savedImageUrl]);
 
-  const handleNameChange = ({ target: { value } }) => {
-    setName(value);
-  };
-
-  const handleDescriptionChange = ({ target: { value } }) => {
-    setDescription(value);
+  const handleChange = ({ target: { name, value } }) => {
+    setValues({ ...values, [name]: value });
   };
 
   const toggleProgressBarDisplay = () => {
@@ -92,9 +94,9 @@ const UploadForm = ({
                 type="text"
                 className="auth-form-input"
                 placeholder="Product name"
-                value={name}
+                value={values.name}
                 autoComplete="name"
-                onChange={handleNameChange}
+                onChange={handleChange}
                 required
                 className="upload-form-input"
               />
@@ -105,9 +107,21 @@ const UploadForm = ({
                 type="text"
                 className="auth-form-input"
                 placeholder="Product description"
-                value={description}
+                value={values.description}
                 autoComplete="description"
-                onChange={handleDescriptionChange}
+                onChange={handleChange}
+                required
+                className="upload-form-input"
+              />
+            </div>
+            <div className="form-row">
+              <input
+                name="price"
+                type="number"
+                className="auth-form-input"
+                placeholder="Price"
+                value={values.price}
+                onChange={handleChange}
                 required
                 className="upload-form-input"
               />
