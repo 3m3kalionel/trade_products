@@ -83,7 +83,43 @@ div#header {
 div#header-lhs,
 div#header-rhs {
   display: flex;
+}
+
+div#header-lhs {
   flex-direction: column;
+}
+
+form#filter {
+  display: flex;
+  align-items: center;
+}
+
+input[name="max"],
+input[name="min"] {
+  max-width: 80px;
+  margin-right: 4px;
+  height: 30px;
+  background: #fff;
+  color: #000;
+}
+
+div.radio-container {
+  display: flex;
+  align-items: center;
+  padding-right: 4px;
+}
+
+input[type="radio"] {
+  margin-right: 4px;
+}
+
+button#filter-button {
+  padding: 4px;
+  height: 30px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-left: 8px;
 }
 
 div#header-rhs {

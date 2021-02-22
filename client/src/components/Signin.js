@@ -21,7 +21,7 @@ const Signin = () => {
   const handleOnSubmit = async payload => {
     const {
       data: {
-        user: { username, _id },
+        user: { username, _id, coordinates },
         token,
       },
     } = await axiosApi.post("/user/signin", payload);
@@ -31,6 +31,7 @@ const Signin = () => {
       _id,
       token,
       username,
+      coordinates,
     };
 
     setToken(userDetails);

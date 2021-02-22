@@ -73,6 +73,7 @@ const fetchProductsByLocation = async (req, res) => {
       distanceUnit,
       parseFloat(maximumDistance)
     );
+
     const products = await productModel.aggregate([
       {
         $geoNear: {

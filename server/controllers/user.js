@@ -62,6 +62,12 @@ const signin = async (req, res) => {
     email: email.toLowerCase(),
   });
 
+  const {
+    _id,
+    username,
+    location: { coordinates },
+  } = existingUser;
+
   if (!existingUser) {
     return res.status(404).send({
       message: "status: failed - Email or password is incorrect",
@@ -86,8 +92,9 @@ const signin = async (req, res) => {
         messge: "status: success - signed in",
         token,
         user: {
-          _id: existingUser._id,
-          username: existingUser.username,
+          _id,
+          username,
+          coordinates,
         },
       });
     } else {
