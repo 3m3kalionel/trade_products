@@ -179,7 +179,7 @@ const notifyUser = async (req, res) => {
   notify(payload);
 
   return res.status(200).json({
-    message: "status: success - check your email for a message",
+    message: "status: success - sms and email messges have been sent",
   });
 };
 

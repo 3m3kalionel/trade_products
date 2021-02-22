@@ -50,7 +50,7 @@ const mailTransporter = nodemailer.createTransport({
 export const sendMail = async (user, email) => {
   const { subject, messageHtmlTemplate } = email;
   await mailTransporter.sendMail({
-    from: "Your friends at trade_depot <random.projects.mailer@gmail.com>",
+    from: `Your friends at trade_depot <${process.env.HOST_EMAIL}>`,
     to: user.email,
     subject,
     html: messageHtmlTemplate,
