@@ -1,8 +1,9 @@
 import { createServer } from "http";
 
-import app from "./app";
+import app, { port } from "./app";
 
-const port = parseInt(process.env.PORT, 10) || 8080;
+// const port = parseInt(process.env.PORT, 10) || 8080;
+console.log("haha", port);
 
 app.set("port", port);
 
