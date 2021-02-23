@@ -246,17 +246,22 @@ const BuyPage = () => {
         </div>
         <div id="body">
           <div id="body-container">
-            {productsList.map((product, key) => {
-              return (
-                <Product
-                  details={product}
-                  key={key}
-                  setClickedProductDetails={setClickedProductDetails}
-                  onIncrement={handleAddCartItem}
-                  onToggle={toggleCart}
-                />
-              );
-            })}
+            {productsList ? (
+              productsList.map((product, key) => {
+                return (
+                  <Product
+                    details={product}
+                    key={key}
+                    setClickedProductDetails={setClickedProductDetails}
+                    onIncrement={handleAddCartItem}
+                    onToggle={toggleCart}
+                  />
+                );
+              })
+            ) : (
+              <h3>No products to display</h3>
+            )}
+            )
           </div>
         </div>
       </div>
