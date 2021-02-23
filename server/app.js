@@ -13,7 +13,7 @@ const app = express();
 const ALLOWED_ORIGINS = [
   "http://localhost:3000",
   "http://localhost:5000",
-  "https://trade-market-client.herokuapp.com/",
+  "https://trade-market-client.herokuapp.com",
 ];
 
 app.use(
