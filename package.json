@@ -1,27 +1,18 @@
 {
   "name": "trade_products",
-  "version": "1.0.0",
-  "description": "a trading platform for buying and selling products ... by location",
-  "main": "index.js",
-  "scripts": {
-    "start": "npm run start:prod",
-    "start:dev": "NODE_ENV=development nodemon ./server/index.js",
-    "start:prod": "NODE_ENV=production node ./server/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/3m3kalionel/trade_products.git"
-  },
-  "author": "whitebeltdev",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/3m3kalionel/trade_products/issues"
-  },
-  "homepage": "https://github.com/3m3kalionel/trade_products#readme",
+  "version": "0.1.0",
+  "private": true,
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
@@ -35,6 +26,39 @@
     "jusibe": "^1.0.3",
     "mongoose": "^5.11.15",
     "mongoose-beautiful-unique-validation": "^7.1.1",
-    "nodemailer": "^6.4.18"
+    "nodemailer": "^6.4.18",
+    "axios": "^0.21.1",
+    "react-currency-format": "^1.0.0",
+    "react-icons": "^4.2.0",
+    "react-places-autocomplete": "^7.3.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "scripts": {
+    "start": "yarn run start:prod & yarn run start:prod:client",
+    "start:dev": "NODE_ENV=development nodemon ./server/index.js",
+    "start:prod": "NODE_ENV=production node ./server/index.js",
+    "start:prod:client": "serve -s build",
+    "start:dev:client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
