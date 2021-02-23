@@ -9,7 +9,7 @@ import connect, { getDb } from "./connect";
 
 dotenv.config();
 
-export const port = parseInt(process.env.PORT, 10) || 8080;
+export const port = process.env.PORT || 8080;
 
 const app = express();
 app.use(cors());
