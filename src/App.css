@@ -122,6 +122,10 @@ button#filter-button {
   margin-left: 8px;
 }
 
+button#filter-button:disabled {
+  cursor: not-allowed;
+}
+
 div#header-rhs {
   justify-content: flex-end;
 }

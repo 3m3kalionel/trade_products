@@ -66,10 +66,18 @@ const fetchProducts = async (req, res) => {
 
 const fetchProductsByLocation = async (req, res) => {
   try {
-    const { lng, lat, maximumDistance, distanceUnit, userId } = req.query;
+    const {
+      lng,
+      lat,
+      minimumDistance,
+      maximumDistance,
+      distanceUnit,
+      userId,
+    } = req.query;
 
     const distanceDetails = getDistanceDetailis(
       distanceUnit,
+      parseFloat(minimumDistance),
       parseFloat(maximumDistance)
     );
 

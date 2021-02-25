@@ -43,7 +43,7 @@ const Modal = ({
       >
         <div id="image-form">
           <div id="lhs">
-            <img src={imageUrl} alt="expanded-selected-image" />
+            <img src={imageUrl} alt="description" />
           </div>
           <div id="rhs">
             <form

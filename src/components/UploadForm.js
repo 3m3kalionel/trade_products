@@ -79,6 +79,7 @@ const UploadForm = ({
         }}
       >
         <div id="authentication-form">
+          <div id="progress-bar" style={{ width: "100%" }}></div>
           {selectedImage && progressBarDisplay && (
             <ProgressBar
               selectedImage={selectedImage}
@@ -92,38 +93,35 @@ const UploadForm = ({
               <input
                 name="name"
                 type="text"
-                className="auth-form-input"
+                className="auth-form-input upload-form-input"
                 placeholder="Product name"
                 value={values.name}
                 autoComplete="name"
                 onChange={handleChange}
                 required
-                className="upload-form-input"
               />
             </div>
             <div className="form-row">
               <input
                 name="description"
                 type="text"
-                className="auth-form-input"
+                className="auth-form-input upload-form-input"
                 placeholder="Product description"
                 value={values.description}
                 autoComplete="description"
                 onChange={handleChange}
                 required
-                className="upload-form-input"
               />
             </div>
             <div className="form-row">
               <input
                 name="price"
                 type="number"
-                className="auth-form-input"
+                className="auth-form-input upload-form-input"
                 placeholder="Price"
                 value={values.price}
                 onChange={handleChange}
                 required
-                className="upload-form-input"
               />
             </div>
 

@@ -211,7 +211,7 @@ const BuyPage = () => {
                 onChange={event => handleChange(event)}
               />
               <input
-                type="text"
+                type="number"
                 name="max"
                 placeholder="Max"
                 onChange={event => handleChange(event)}
@@ -238,7 +238,14 @@ const BuyPage = () => {
                 />
                 <label htmlFor="miles">miles</label>
               </div>
-              <button type="submit" id="filter-button">
+              <button
+                type="submit"
+                id="filter-button"
+                disabled={
+                  (values.min === 0 || values.min === "") &&
+                  (values.max === 0 || values.max === "")
+                }
+              >
                 Filter
               </button>
             </form>
@@ -261,7 +268,7 @@ const BuyPage = () => {
             ) : (
               <h3>No products to display</h3>
             )}
-            )
+            {/* ) */}
           </div>
         </div>
       </div>

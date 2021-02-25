@@ -145,17 +145,23 @@ export async function validateDocument(modelParam, documentId, queryOptions) {
   }
 }
 
-export const getDistanceDetailis = (distanceUnit, maximumDistance) => {
+export const getDistanceDetailis = (
+  distanceUnit,
+  minimumDistance,
+  maximumDistance
+) => {
   switch (distanceUnit) {
     case "km":
       return {
         maxDistance: maximumDistance * 1000,
+        minDistance: minimumDistance * 1000,
         distanceMultiplier: 1 / 1000,
         distanceField: "distance in km",
       };
       break;
     case "miles":
       return {
+        minDistance: minimumDistance * 1609.34,
         maxDistance: maximumDistance * 1609.34,
         distanceMultiplier: 1 / 1609.34,
         distanceField: "distance in miles",

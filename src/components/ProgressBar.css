@@ -6,11 +6,13 @@ div#progress-bar {
 /*
 
 style.background =
-      `linear-gradient(to right, ${progressSliderType[type].progress} 0%, ${progressSliderType[type].progress} ` +
-      percentage +
-      `%, ${progressSliderType[type].default} ` +
-      percentage +
-      `%, ${progressSliderType[type].default} 100%)`;
+      `linear-gradient(
+        to right, 
+        ${progressSliderType[type].progress} 0%, 
+        ${progressSliderType[type].progress} ` + percentage + `%,
+        ${progressSliderType[type].default} ` + percentage + `%, 
+        ${progressSliderType[type].default} 100%
+      )`;
       transition: background 450ms ease-in;
 
 */

@@ -9,7 +9,7 @@ import "./Cart.css";
 const Cart = props => {
   const { cart, cartActions, width } = props;
 
-  const { onIncrement, onDecrement, onDelete, onToggle, onClick } = cartActions;
+  const { onIncrement, onDecrement, onDelete, onToggle } = cartActions;
 
   const getCartPriceTotal = cart.reduce((acc, obj) => {
     acc += obj.price * obj.quantity;

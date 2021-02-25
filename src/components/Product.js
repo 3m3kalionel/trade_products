@@ -1,4 +1,5 @@
 import React from "react";
+import CurrencyFormat from "react-currency-format";
 
 import "./Product.css";
 
@@ -8,7 +9,7 @@ const Product = ({
   onIncrement,
   onToggle,
 }) => {
-  const { _id, name, description, imageUrl, price } = details;
+  const { name, description, imageUrl, price } = details;
 
   return (
     <div className="product">
@@ -22,7 +23,18 @@ const Product = ({
       />
       <div className="user-product-description">
         <p className="title">{name}</p>
-        <p className="cost">From {price}</p>
+        <p className="cost">
+          From{" NGN "}
+          <CurrencyFormat
+            value={price}
+            thousandSeparator={true}
+            displayType={"text"}
+            decimalScale={2}
+            fixedDecimalScale={true}
+          />
+          {/* {" "} */}
+          {/* {price} */}
+        </p>
       </div>
       <button
         className="add-to-cart-button"

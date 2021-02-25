@@ -149,7 +149,7 @@ const notifyUser = async (req, res) => {
           <p style="color: #000"><b>Hello ${receiver.username},</b></p>
           <p>You just received a message about one of your products. Open the web app to check it out or click the button below to open it directly.</p>
           <div>
-          <a href="$trade-depot/reset?resetToken=#" style="margin: 25px auto; background: #EE5A33; color: #fff; width: 130px; height: 48px; border-radius: 3px; font-size: 10px;  text-decoration: none; padding: 5px 10px;">
+          <a href="$trade-market/reset?resetToken=#" style="margin: 25px auto; background: #EE5A33; color: #fff; width: 130px; height: 48px; border-radius: 3px; font-size: 10px;  text-decoration: none; padding: 5px 10px;">
               Check it out
           </a>
           </div>
