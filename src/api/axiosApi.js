@@ -7,10 +7,10 @@ const getbaseUrl = env => {
   let appUrl;
   switch (env) {
     case "production":
-      appUrl = "REACT_APP_SERVER_PROD_URL";
+      appUrl = "https://trade-market-test.herokuapp.com/api/v1";
       break;
     default:
-      appUrl = "REACT_APP_SERVER_DEV_URL";
+      appUrl = "http://localhost:8080/api/v1";
   }
   return process.env[appUrl];
 };
@@ -20,4 +20,4 @@ export default axios.create({
   headers: { "content-type": "application/json" },
 });
 
-console.log("&&&&", process.env.NODE_ENV);
+console.log(getbaseUrl(process.env.NODE_ENV), "&&&&", process.env.NODE_ENV);
