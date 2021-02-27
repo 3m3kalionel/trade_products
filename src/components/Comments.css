@@ -16,3 +16,7 @@ div.child-comments {
 span.reply {
   cursor: pointer;
 }
+
+span.reply:focus {
+  color: green;
+}

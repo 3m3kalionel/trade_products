@@ -150,6 +150,9 @@ export const getDistanceDetailis = (
   minimumDistance,
   maximumDistance
 ) => {
+  minimumDistance = minimumDistance || 0;
+  maximumDistance = maximumDistance || 0;
+
   switch (distanceUnit) {
     case "km":
       return {
