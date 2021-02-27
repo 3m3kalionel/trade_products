@@ -17,7 +17,7 @@ const getbaseUrl = env => {
 
 export default axios.create({
   baseURL: getbaseUrl(process.env.NODE_ENV),
-  headers: { "content-type": "application/json" },
+  headers: { "Content-Type": "application/json" },
 });
 
 console.log("&&&&", process.env.NODE_ENV);
