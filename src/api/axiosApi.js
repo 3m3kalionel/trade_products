@@ -12,7 +12,7 @@ const getbaseUrl = env => {
     default:
       appUrl = "REACT_APP_SERVER_DEV_URL";
   }
-  return appUrl;
+  return process.env[appUrl];
 };
 
 export default axios.create({
