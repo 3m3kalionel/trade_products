@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import beautifyUnique from "mongoose-beautiful-unique-validation";
 
 import locationSchema from "./locationSchema";
+import { commentSchema } from "./commentSchema";
 import { isEmpty } from "../utils.js";
 
 const productSchema = new mongoose.Schema(
@@ -58,6 +59,7 @@ const productSchema = new mongoose.Schema(
       ],
     },
     location: locationSchema,
+    comments: [commentSchema],
   },
   { timestamps: true }
 );

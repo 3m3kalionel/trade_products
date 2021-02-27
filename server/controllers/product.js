@@ -1,4 +1,5 @@
 import productModel from "../models/productModel";
+
 import {
   handleError,
   validateDocument,
@@ -52,6 +53,7 @@ const fetchProducts = async (req, res) => {
     const products = await productModel
       .find()
       .populate({ path: "productOwnerId", select: "username" })
+      .populate({ path: "comments.user", select: "username" })
       .sort({ createdAt: "desc" });
     return res.status(200).send({
       message: "status: success - products found",
@@ -109,8 +111,50 @@ const fetchProductsByLocation = async (req, res) => {
   }
 };
 
+const addCommentToProduct = async (req, res) => {
+  const { productId, message, senderId, parentId, recipientId } = req.body;
+
+  const comment = {
+    message,
+    user: senderId,
+  };
+
+  const query = {
+    $addToSet: {
+      comments: {
+        ...comment,
+        ...(parentId && {
+          parent: parentId,
+        }),
+      },
+    },
+  };
+
+  try {
+    const updatedProduct = await productModel.findByIdAndUpdate(
+      productId,
+      query,
+      {
+        new: true,
+        returnNewDocument: true,
+        useFindAndModify: false,
+      }
+    );
+
+    return res.status(200).send({
+      message: "status: success - comment added",
+      product: updatedProduct,
+    });
+  } catch (error) {
+    return res.status(400).send({
+      message: "failed",
+    });
+  }
+};
+
 export default {
   createProduct,
   fetchProducts,
   fetchProductsByLocation,
+  addCommentToProduct,
 };

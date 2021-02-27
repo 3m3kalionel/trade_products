@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IconContext } from "react-icons";
 import { IoCartOutline } from "react-icons/io5";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import Product from "./Product";
 import Modal from "./Modal";
@@ -157,8 +157,12 @@ const BuyPage = () => {
           <div id="left-section">
             <ul>
               <li>TRADE MARKET</li>
-              <li>Shop</li>
-              <li>Learn</li>
+              <li>
+                <Link to="/sell">Sell</Link>
+              </li>
+              <li>
+                <Link to="/buy">Buy</Link>
+              </li>
             </ul>
           </div>
           <div id="right-section">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Comments from "./Comments";
 
 import "./Modal.css";
 import axiosApi from "../api/axiosApi";
@@ -8,27 +9,30 @@ const Modal = ({
   setClickedProductDetails,
   userDetails,
 }) => {
-  const [message, setMessage] = useState("");
-  const [messagesList, setMessagesList] = useState([]);
+  const [allComments, setComments] = useState(
+    clickedProductDetails.comments || []
+  );
 
   const { name, description, imageUrl, productOwnerId } = clickedProductDetails;
 
   const handleOnSubmit = async payload => {
-    await axiosApi.post("/user/notify", payload);
-    setMessagesList([
-      ...messagesList,
-      {
+    axiosApi
+      .post("/products/message", {
+        productId: clickedProductDetails._id,
+        senderId: userDetails._id,
         message: payload.message,
-        sender: userDetails.username,
-      },
-    ]);
-    setMessage("");
-  };
-
-  const payload = {
-    senderId: userDetails._id,
-    recipientId: productOwnerId._id,
-    message,
+        parentId: payload.parent,
+      })
+      .then(function (response) {
+        axiosApi.post("/user/notify", {
+          recipientId: productOwnerId._id,
+          senderId: userDetails._id,
+          message: payload.message,
+        });
+      })
+      .catch(function (error) {
+        console.log("@@@error here", error);
+      });
   };
 
   return (
@@ -50,7 +54,7 @@ const Modal = ({
               id="comments-form"
               onSubmit={event => {
                 event.preventDefault();
-                handleOnSubmit(payload);
+                handleOnSubmit();
               }}
             >
               <div id="form-body">
@@ -60,24 +64,12 @@ const Modal = ({
                   <div className="product-description">{description}</div>
                 </div>
 
-                {messagesList &&
-                  messagesList.map((message, key) => (
-                    <div className="owner-section" key={key}>
-                      <div className="commenter-name">{message.sender}</div>
-                      <div className="user-comment">{message.message}</div>
-                    </div>
-                  ))}
-                <div id="message-row">
-                  <input
-                    value={message}
-                    onChange={({ target: { value } }) => setMessage(value)}
-                    placeholder="Enter your message"
-                    required
+                {allComments && (
+                  <Comments
+                    allComments={allComments}
+                    handleSave={handleOnSubmit}
                   />
-                  <button type="submit" id="send-button">
-                    Send
-                  </button>
-                </div>
+                )}
               </div>
             </form>
           </div>

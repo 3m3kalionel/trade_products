@@ -79,7 +79,6 @@ const UploadForm = ({
         }}
       >
         <div id="authentication-form">
-          <div id="progress-bar" style={{ width: "100%" }}></div>
           {selectedImage && progressBarDisplay && (
             <ProgressBar
               selectedImage={selectedImage}

@@ -7,16 +7,6 @@ div#backdrop {
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* div#backdrop form {
-  background: red;
-  display: flex;
-
-  display: block;
-  max-width: 60%;
-  max-height: 80%;
-  margin: 60px auto;
-} */
-
 div#backdrop div#image-form {
   display: flex;
   margin: 60px auto;
@@ -45,12 +35,6 @@ div#backdrop div#rhs {
 
 div.owner-section {
   display: inline-block;
-}
-
-div.owner-name,
-div.commenter-name {
-  font-size: 12px;
-  font-weight: 600;
 }
 
 div.product-description,

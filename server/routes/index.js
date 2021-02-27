@@ -15,6 +15,7 @@ const router = app => {
     authenticate,
     productController.fetchProductsByLocation
   );
+  app.post("/api/v1/products/message", productController.addCommentToProduct);
 };
 
 export default router;

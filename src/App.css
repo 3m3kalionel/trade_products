@@ -168,3 +168,16 @@ div#body-container {
     padding-top: 100px;
   }
 }
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #000;
+}
+
+div#upload-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
