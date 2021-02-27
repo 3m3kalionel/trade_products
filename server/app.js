@@ -21,22 +21,12 @@ export const port = process.env.PORT || 8080;
 // ];
 
 const app = express();
-app.use(cors());
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       // if (!origin) return callback(null, true);
-
-//       // if (ALLOWED_ORIGINS.indexOf(origin) === -1) {
-//       //   const msg =
-//       //     "The CORS policy for this site does not allow access from the specified Origin.";
-//       //   return callback(new Error(msg), false);
-//       // }
-
-//       return callback(null, true);
-//     },
-//   })
-// );
+// app.use(cors());
+app.use(
+  cors({
+    origin: false,
+  })
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
