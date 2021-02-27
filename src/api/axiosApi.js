@@ -7,10 +7,10 @@ const getbaseUrl = env => {
   let appUrl;
   switch (env) {
     case "production":
-      appUrl = "https://trade-market-test.herokuapp.com/api/v1";
+      appUrl = "REACT_APP_SERVER_PROD_URL";
       break;
     default:
-      appUrl = "http://localhost:8080/api/v1";
+      appUrl = "REACT_APP_SERVER_DEV_URL";
   }
   return appUrl;
 };

@@ -12,9 +12,15 @@ dotenv.config();
 
 export const port = process.env.PORT || 7000;
 
-const ALLOWED_ORIGINS = ["https://trade-market-test.herokuapp.com"];
+const ALLOWED_ORIGINS = [
+  "https://trade-market-test.herokuapp.com",
+  "http://localhost:3000",
+];
 
 const app = express();
+
+connect();
+getDb();
 
 app.use(
   cors({
@@ -38,16 +44,14 @@ const publicPath = path.join(__dirname, "../build", "index.html");
 
 app.use(express.static(path.join(__dirname, "../build")));
 
-app.get("/*", function (req, res) {
-  res.sendFile(publicPath);
-});
-
 app.get("/", (req, res) =>
   res.status(200).send("Yo! Welcome to trade products")
 );
 
 routes(app);
-connect();
-getDb();
+
+app.get("/*", function (req, res) {
+  res.sendFile(publicPath);
+});
 
 export default app;
