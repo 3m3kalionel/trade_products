@@ -12,7 +12,7 @@ const getbaseUrl = env => {
     default:
       appUrl = "http://localhost:8080/api/v1";
   }
-  return process.env[appUrl];
+  return appUrl;
 };
 
 export default axios.create({
